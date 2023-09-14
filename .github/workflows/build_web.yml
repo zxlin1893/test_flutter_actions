@@ -39,7 +39,7 @@ jobs:
           git init
           git config --global user.email zxlin1893@gmail.com
           git config --global user.name zxlin1893
-          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
+          git remote add origin https://${{secrets.PUSH_ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
           git remote -v
           git checkout -b gh-pages
           git add --all
