@@ -37,21 +37,13 @@ jobs:
         run: |
           cd build/web
           git init
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email zxlin1893@gmail.com
+          git config --global user.name zxlin1893
+          git status
+          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
+          git branch -a
           git checkout -b gh-pages
           git add --all
           git commit -m "deploy web"
           git push origin gh-pages -f
-
-#        run: |
-#          cd build/web
-#          git init
-#          git config --global user.email zxlin1893@gmail.com
-#          git config --global user.name zxlin1893
-#          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
-#          git checkout -b gh-pages
-#          git add --all
-#          git commit -m "deploy web"
-#          git push origin gh-pages -f
           
