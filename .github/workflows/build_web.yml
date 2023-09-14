@@ -17,9 +17,29 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+            flutter-version: "3.13.3"
+            channel: "stable"
+            cache: true
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+
+      - name: Run flutter dependencies.
+        run: flutter pub get
+      - name: run flutter build
+        run: flutter build web
+      - name: run deploy web
+        run: |
+          cd build/web
+          git init
+          git config --global user.email zxlin1893@gmail.com
+          git config --global user.name lzx_from_actions
+          git remote add origin https://${{secretes.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "deploy web"
+          git push origin gh-pages -f
+          
