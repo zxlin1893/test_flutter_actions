@@ -19,7 +19,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v2
         with:
             flutter-version: "3.13.3"
@@ -39,9 +39,8 @@ jobs:
           git init
           git config --global user.email zxlin1893@gmail.com
           git config --global user.name zxlin1893
-          git status
           git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
-          git branch -a
+          git remote -v
           git checkout -b gh-pages
           git add --all
           git commit -m "deploy web"
