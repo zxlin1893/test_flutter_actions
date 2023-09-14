@@ -12,6 +12,8 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    name: Build web app
+
     # The type of runner that the job will run on
     runs-on: macos-latest
 
@@ -37,7 +39,7 @@ jobs:
           git init
           git config --global user.email zxlin1893@gmail.com
           git config --global user.name lzx_from_actions
-          git remote add origin https://${{secretes.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
+          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/zxlin1893/test_flutter_actions.git
           git checkout -b gh-pages
           git add --all
           git commit -m "deploy web"
